@@ -1,0 +1,11 @@
+{
+  "name": "ascterra",
+  "compatibility_date": "2026-10-01",
+  "d1_databases": [
+    {
+      "binding": "ascterra_db",
+      "database_name": "ascterra-db",
+      "database_id": "de09ce43-3eb7-42f0-a01a-53430857c268"
+    }
+  ]
+}
