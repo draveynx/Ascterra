@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-type Item = { id: number; judul: string; platform: string; status: string }
+type Item = { id: number; judul: string; platform: string; status: string; tanggal_tayang: string | null }
 
 const PLATFORM = ['tiktok', 'instagram', 'youtube', 'facebook', 'x']
 const STATUS = ['ide', 'produksi', 'siap', 'tayang']
@@ -10,6 +10,7 @@ export default function Konten() {
   const [judul, setJudul] = useState('')
   const [platform, setPlatform] = useState('tiktok')
   const [status, setStatus] = useState('ide')
+  const [tanggal, setTanggal] = useState('')
   const [pesan, setPesan] = useState('')
 
   async function muat() {
@@ -35,13 +36,23 @@ export default function Konten() {
     const r = await fetch('/api/konten', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ judul, platform, status }),
+      body: JSON.stringify({ judul, platform, status, tanggal_tayang: tanggal || null }),
     })
     if (!r.ok) {
       setPesan('Gagal menyimpan konten.')
       return
     }
     setJudul('')
+    setTanggal('')
+    muat()
+  }
+
+  async function ubahTanggal(id: number, tanggal_tayang: string) {
+    await fetch('/api/konten/' + id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tanggal_tayang }),
+    })
     muat()
   }
 
@@ -60,6 +71,7 @@ export default function Konten() {
         <select className="isian" value={status} onChange={(e) => setStatus(e.target.value)}>
           {STATUS.map((s) => <option key={s}>{s}</option>)}
         </select>
+        <input className="isian" type="date" value={tanggal} onChange={(e) => setTanggal(e.target.value)} />
         <button className="tombol" onClick={tambah}>Tambah konten</button>
       </div>
       {pesan && <p className="pesan">{pesan}</p>}

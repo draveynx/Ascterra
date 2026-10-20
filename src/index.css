@@ -21,3 +21,11 @@ h1{font-size:1.4rem;margin:8px 0 16px}
 .stat{display:flex;flex-direction:column;gap:4px;padding:16px}
 .stat strong{font-size:1.8rem;color:var(--hijau)}
 .stat span{color:var(--abu);text-transform:capitalize}
+.kal-kepala{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.kal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.kal-hari{text-align:center;color:var(--abu);font-size:.75rem;padding:4px 0}
+.kal-sel{position:relative;aspect-ratio:1;background:var(--kartu);color:var(--teks);border:1px solid var(--garis);border-radius:10px;font-size:.95rem;cursor:pointer}
+.kal-sel.ini{border-color:var(--hijau)}
+.kal-sel.pilih{background:var(--hijau);color:#fff}
+.titik{position:absolute;right:4px;bottom:3px;font-size:.65rem;font-style:normal;background:var(--hijau-muda);color:var(--hijau);border-radius:8px;padding:0 5px}
+.kal-judul{margin:16px 0 8px}

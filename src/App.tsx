@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Konten from './Konten'
+import Kalender from './Kalender'
 import Dashboard from './Dashboard'
 
 type Menu = { id: string; label: string; ikon: string }
@@ -40,6 +41,8 @@ export default function App() {
   let isi
   if (halaman === 'dashboard') {
     isi = <Dashboard bukaKonten={() => setHalaman('konten')} />
+  } else if (halaman === 'kalender') {
+    isi = <Kalender />
   } else if (halaman === 'konten') {
     isi = <Konten />
   } else if (halaman === 'lainnya') {
