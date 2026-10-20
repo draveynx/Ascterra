@@ -1,5 +1,6 @@
 {
   "name": "ascterra",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
   "d1_databases": [
     {

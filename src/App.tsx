@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Konten from './Konten'
+import Dashboard from './Dashboard'
 
 type Menu = { id: string; label: string; ikon: string }
 
@@ -37,7 +39,9 @@ export default function App() {
 
   let isi
   if (halaman === 'dashboard') {
-    isi = <Kosong pesan="Belum ada konten. Mulai dengan menambahkan konten pertama Anda." aksi="Ke menu Konten" onAksi={() => setHalaman('konten')} />
+    isi = <Dashboard bukaKonten={() => setHalaman('konten')} />
+  } else if (halaman === 'konten') {
+    isi = <Konten />
   } else if (halaman === 'lainnya') {
     isi = (
       <div className="daftar">
